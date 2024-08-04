@@ -15,21 +15,22 @@ import com.example.spring_boot_demo.repository.UserRepository;
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
-	@Autowired
-	private UserRepository userRepository;
-	
+
 //	@GetMapping
 //	public String getUsers() {
 //		return "Hello API";
 //	}
 
+	@Autowired
+	private UserRepository userRepository;
+
 	@GetMapping
-	public List<User> getUsers() {
+	public List<User> getAllUsers() {
 		return userRepository.findAll();
 	}
-	
-	@PostMapping("/createUser")
-    public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
-    }
+
+	@PostMapping
+	public User createUser(@RequestBody User user) {
+		return userRepository.save(user);
+	}
 }
