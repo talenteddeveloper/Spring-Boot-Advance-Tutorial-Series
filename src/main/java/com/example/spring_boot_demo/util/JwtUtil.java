@@ -5,6 +5,7 @@ import javax.crypto.SecretKey;
 
 import org.springframework.stereotype.Component;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -32,5 +33,28 @@ public class JwtUtil {
 
 		// Generate the SecretKey using the static word
 		return Keys.hmacShaKeyFor(keyBytesPadded);
+	}
+	
+
+	public boolean validateToken(String token, String username) {
+		return (username.equals(getUsername(token)) && !isTokenExpired(token) );
+	}
+
+	private boolean isTokenExpired(String token) {
+		// TODO Auto-generated method stub
+		return getClaims(token).getExpiration().before(new Date());
+	}
+
+	private String getUsername(String token) {
+		// TODO Auto-generated method stub
+		return getClaims(token).getSubject();
+	}
+
+	public String extractUsername(String token) {
+		return getClaims(token).getSubject();
+	}
+
+	public Claims getClaims(String token) {
+		return Jwts.parser().verifyWith(generateJwtSecretKey()).build().parseSignedClaims(token).getPayload();
 	}
 }
