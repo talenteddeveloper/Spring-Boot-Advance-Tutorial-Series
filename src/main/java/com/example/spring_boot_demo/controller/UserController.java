@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.spring_boot_demo.model.User;
 import com.example.spring_boot_demo.repository.UserRepository;
 
+
+// Udemy Course: https://www.udemy.com/share/10c2y5/
+// Youtube playlist: https://www.youtube.com/playlist?list=PLyzY2l387AlMe2DLp_aWHIbhSiDmHr5xw
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
