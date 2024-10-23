@@ -17,6 +17,8 @@ import com.example.spring_boot_demo.model.User;
 import com.example.spring_boot_demo.service.CustomUserDetailsService;
 import com.example.spring_boot_demo.util.JwtUtil;
 
+// Udemy Course: https://www.udemy.com/share/10c2y5/
+// Youtube playlist: https://www.youtube.com/playlist?list=PLyzY2l387AlMe2DLp_aWHIbhSiDmHr5xw
 @RestController
 @RequestMapping("/api")
 public class AuthenticationController {
