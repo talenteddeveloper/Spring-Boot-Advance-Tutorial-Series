@@ -21,6 +21,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.example.spring_boot_demo.filter.JwtRequestFilter;
 import com.example.spring_boot_demo.service.CustomUserDetailsService;
 
+// Udemy Course: https://www.udemy.com/share/10c2y5/
+// Youtube playlist: https://www.youtube.com/playlist?list=PLyzY2l387AlMe2DLp_aWHIbhSiDmHr5xw
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
