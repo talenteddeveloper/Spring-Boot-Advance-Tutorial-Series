@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.spring_boot_demo.model.User;
 import com.example.spring_boot_demo.repository.UserRepository;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // Udemy Course: https://www.udemy.com/share/10c2y5/
 // Youtube playlist: https://www.youtube.com/playlist?list=PLyzY2l387AlMe2DLp_aWHIbhSiDmHr5xw
@@ -29,7 +30,8 @@ public class UserController {
 //	public String getUsers() {
 //		return "Hello API";
 //	}
-
+	private static final Logger logger= LoggerFactory.getLogger(UserController.class);
+    
 	@Autowired
 	private UserRepository userRepository;
 
@@ -49,6 +51,7 @@ public class UserController {
 
 	@GetMapping("/{id}")
 	public User getUserById(@PathVariable Long id) {
+		logger.info("Getting userdetails for id: "+id);
 		return userRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("User not found with id " + id));
 	}
