@@ -37,11 +37,11 @@ public class SecurityConfig {
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
 		.csrf().disable()
-		.authorizeHttpRequests(requests -> requests
-					.requestMatchers("/api/authenticate").permitAll()
-				.requestMatchers("/api/users/**").authenticated()
-				.anyRequest().permitAll()
-				)
+		.authorizeHttpRequests((requests) -> requests
+       		 .requestMatchers("/api/authenticate").permitAll()
+            .requestMatchers("/api/users/**").hasRole("USER")
+            .requestMatchers("/api/admin/**").hasRole("ADMIN")
+            .anyRequest().authenticated())
 		  .sessionManagement(session -> session
 	        		 .sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 	         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
