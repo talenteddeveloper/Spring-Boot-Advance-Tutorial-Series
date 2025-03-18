@@ -33,6 +33,7 @@ public class SecurityConfig {
 	@Autowired
 	private JwtRequestFilter jwtRequestFilter;
 	
+	//Learn user roles : https://youtu.be/nN68jjUP_rQ
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		http
