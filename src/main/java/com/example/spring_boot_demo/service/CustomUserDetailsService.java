@@ -11,15 +11,19 @@ import org.springframework.stereotype.Service;
 
 import com.example.spring_boot_demo.model.User;
 import com.example.spring_boot_demo.repository.UserRepository;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
-
+	private static final Logger logger = LoggerFactory.getLogger(CustomUserDetailsService.class);
+	
 	@Autowired
 	private UserRepository userRepository;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		logger.info("Fetching user from db: {} ",username);
+		
 		User user= userRepository.findByUsername(username);
 		if(user == null) {
 			throw new UsernameNotFoundException("User not found with username: "+username);
